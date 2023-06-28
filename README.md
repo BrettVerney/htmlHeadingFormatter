@@ -15,7 +15,7 @@ Run the script with Python, providing the input and output files as arguments:
 ```python htmlHeadingFormatter.py -i inputfile.txt -o outputfile.txt```
 
 
-Replace `inputfile.txt` with the name of your input text file, and `outputfile.txt` with the name of the output HTML file you want to create.
+Replace `inputfile.txt` with the name of your input text file, and `outputfile.txt` with the name of the output file you want to create.
 
 If you run the script without specifying any arguments, it will default to using `headings-raw.txt` as the input file and `headings-html.txt` as the output file.
 
