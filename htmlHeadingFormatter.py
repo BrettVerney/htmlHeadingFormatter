@@ -1,3 +1,6 @@
+# Script by Brett Verney (@wifiwizardofoz)
+# Version: v1.0 | 28-06-2023
+
 import argparse
 import os
 
