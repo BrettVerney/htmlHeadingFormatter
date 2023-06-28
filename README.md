@@ -1,5 +1,5 @@
 # htmlHeadingFormatter
-This script takes a plain text file with various headings and subheadings and generates a corresponding text file with HTML-formatted headings and navigation links. 
+This Python script aims to alleviate the task of creating HTML navigation and headings for blog writers and web developers. By reading an indented text file representing heading hierarchy, it generates a corresponding HTML text file with navigation links and proper HTML headings. This tool is an efficient solution for those managing large, section-heavy web content, reducing manual effort and increasing productivity.
 
 **Author:** Brett Verney</br>
 **Version:** v1.0 | 28-06-2023
