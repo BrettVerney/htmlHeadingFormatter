@@ -12,7 +12,7 @@ No installation is required for this script. Just ensure you have Python 3.x ins
 
 Run the script with Python, providing the input and output files as arguments:
 
-python htmlHeadingFormatter.py -i inputfile.txt -o outputfile.html
+```python htmlHeadingFormatter.py -i inputfile.txt -o outputfile.html```
 
 
 Replace `inputfile.txt` with the name of your input text file, and `outputfile.html` with the name of the output HTML file you want to create.
