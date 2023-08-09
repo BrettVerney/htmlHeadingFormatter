@@ -37,25 +37,13 @@ The script generates a text file with corresponding `<h2>`, `<h3>`, etc. HTML ta
 ### Navigation Menu ###
 
 <ul>
-	<li><a href="#Heading1">RF Power Measurement</a>
-		<ul><li><a href="#Heading2">Standard Units of Power</a>
-			<ul><li><a href="#Heading3">Watt</a></li>
-			<li><a href="#Heading4">Milliwatt</a></li>
+	<li><a href="#Heading1">My Top Level Heading</a>
+		<ul><li><a href="#Heading2">My Subheading</a></li>
+		<li><a href="#Heading3">Another Subheading</a>
+			<ul><li><a href="#Heading4">A Lower Level Heading</a></li>
 			</ul></li>
-		<li><a href="#Heading5">Units of Comparison</a>
-			<ul><li><a href="#Heading6">Decibels</a>
-				<ul><li><a href="#Heading7">Decibels Relative to an Isotropic Radiator (dBi)</a></li>
-				<li><a href="#Heading8">Decibels Relative to a Half-Wave Dipole Antenna (dBd)</a></li>
-				<li><a href="#Heading9">Decibels Relative to 1 Milliwatt (dBm)</a></li>
-				</ul></li>
-			</ul></li>
-		<li><a href="#Heading10">Converting Watts to Decibels</a></li>
 		</ul></li>
-	<li><a href="#Heading11">The Inverse Square Law</a></li>
-	<li><a href="#Heading12">RF Maths</a>
-		<ul><li><a href="#Heading13">Rule of 10s and 3s</a></li>
-		<li><a href="#Heading14">RF Math Summary</a></li>
-		</ul></li>
+	<li><a href="#Heading5">Another Top Level Heading</a></li>
 </ul>
 
 ### Headings ###
