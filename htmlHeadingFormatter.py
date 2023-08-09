@@ -1,56 +1,50 @@
-# Script by Brett Verney (@wifiwizardofoz)
-# Version: v1.0 | 28-06-2023
-
 import argparse
-import os
 
 def get_tabs(line):
-    """Returns the number of leading tabs in a line."""
     return len(line) - len(line.lstrip('\t'))
 
-def get_heading_line(heading, index, level):
-    """Formats a heading line."""
-    heading_id = f'Heading{index+1}'
-    return f'<h{level+2} class="wp-block-heading" id="{heading_id}">{heading}</h{level+2}>\n'
-
-def get_nav_line(heading, index, level):
-    """Formats a navigation line."""
-    heading_id = f'Heading{index+1}'
-    nav_line = '\t' * level + f'<li><a href="#{heading_id}">{heading}</a>\n'
-    return nav_line
+def process_line(lines, level):
+    result = ""
+    while lines:
+        line = lines[0].strip()
+        current_level = get_tabs(lines[0])
+        content = line.lstrip('\t')
+        if current_level == level:
+            result += '\t' * (level + 1) + f'<li><a href="#Heading{len(headings) - len(lines) + 1}">{content}</a>'
+            lines.pop(0)
+            if lines and get_tabs(lines[0]) > level:
+                result += '\n' + '\t' * (level + 2) + '<ul>'
+                result += process_line(lines, level + 1).strip()
+                result += '\n' + '\t' * (level + 2) + '</ul>'
+            result += '</li>\n'
+        else:
+            break
+    return result
 
 def generate_html(input_file, output_file):
-    """Reads from an input file, generates HTML and writes to an output file."""
-    with open(input_file, 'r') as raw_file, open(output_file, 'w') as html_file:
+    global headings
+    with open(input_file, 'r') as raw_file:
         headings = raw_file.readlines()
 
+    navigation_menu = process_line(headings.copy(), 0)
+
+    with open(output_file, 'w') as html_file:
         html_file.write('### Navigation Menu ###\n\n<ul>\n')
-        level = 0
-        for i, line in enumerate(headings):
-            line = line.strip()
-            current_level = get_tabs(line)
-            line = line.lstrip('\t')
-
-            if current_level > level:
-                html_file.write('<ul>\n')
-            elif current_level < level:
-                html_file.write('</ul>\n' * (level - current_level))
-
-            html_file.write(get_nav_line(line, i, current_level))
-
-            level = current_level
-        html_file.write('</ul>\n' * (level + 1))
-
-        html_file.write('\n### Headings ###\n\n')
+        html_file.write(navigation_menu)
+        html_file.write('</ul>\n\n### Headings ###\n\n')
 
         for i, line in enumerate(headings):
             line = line.strip().lstrip('\t')
-            html_file.write(get_heading_line(line, i, get_tabs(headings[i])))
+            level = 2 + get_tabs(headings[i])
+            heading_id = f'Heading{i + 1}'
+            html_file.write(f'<h{level} class="wp-block-heading" id="{heading_id}">{line}</h{level}>\n')
 
         print(f"Successfully created {len(headings)} headings with navigation links in '{output_file}'")
 
+# The rest of the code remains the same
+
+
 def main():
-    """Main function to parse command line arguments and call the function to generate HTML."""
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input", help="Input file name", default="headings-raw.txt")
     parser.add_argument("-o", "--output", help="Output file name", default="headings-html.txt")
