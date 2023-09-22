@@ -1,5 +1,0 @@
-My Top Level Heading
-	My Subheading
-	Another Subheading
-		A Lower Level Heading
-Another Top Level Heading
